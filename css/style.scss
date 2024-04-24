@@ -2,6 +2,17 @@ $w:#ffffff;
 $b:#000000;
 $s:#C0C0C0;
 
+$breakpoints: (
+    "sm": "screen and (max-width: 600px)",
+    "md": "screen and (max-width: 768px)",
+    "lg": "screen and (max-width: 1024px)"
+) !default;
+
+@mixin mq($breakpoint) {
+    @media #{map-get($breakpoints, $breakpoint)} {
+        @content;
+    }
+}
 body{
     padding: 0;
     margin: 0;
@@ -31,8 +42,18 @@ header{
     display: flex;
     justify-content: space-around;
     align-items: center;
+    @include mq(sm){
+        display: block;
+        height: 150px; /*指示書には200とあったが大きいので150に*/
+    }
+    h1{
+        text-align: center;
+    }
     ul{
         display: flex;
+        @include mq(sm){
+            justify-content: space-around;
+        }
         li{
             padding-left: 20px;
         }
@@ -44,13 +65,28 @@ header{
     background-position: center;
     width: 100%;
     height: 80vh;
+    @include mq(lg){
+        height: 50vh;
+    }
+    @include mq(sm){
+        background-position: -67%;
+    }
 }
-
+.about{
+    ul{
+        @include mq(sm){
+            text-align: center;
+        }
+    }
+}
 section.gallery{
     ul{
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         gap: 10px;
+        @include mq(sm){
+            display: block;
+        }
         li{
 
             img{
@@ -64,14 +100,30 @@ section.news{
     dl{
         display: grid;
         grid-template-columns: 10em auto;
+        @include mq(sm){
+            display: block;
+        }
         dt,dd{
             border-top: 1px solid $s;
             padding: 15px;
+            @include mq(sm){
+                border-top: 0;
+                padding: 0;
+            }
         }
         dt{
+            @include mq(sm){
+                display: block;
+                font-weight: bold;
+            }
         }
         dd{
             margin-left: 0;
+            @include mq(sm){
+                border-bottom: 1px dotted $b;
+                font-size: 60%;
+                padding: 5px 0;
+            }
         }
     }
 }

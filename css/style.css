@@ -1,3 +1,4 @@
+@charset "UTF-8";
 body {
   padding: 0;
   margin: 0;
@@ -28,8 +29,22 @@ header {
   justify-content: space-around;
   align-items: center;
 }
+@media screen and (max-width: 600px) {
+  header {
+    display: block;
+    height: 150px; /*指示書には200とあったが大きいので150に*/
+  }
+}
+header h1 {
+  text-align: center;
+}
 header ul {
   display: flex;
+}
+@media screen and (max-width: 600px) {
+  header ul {
+    justify-content: space-around;
+  }
 }
 header ul li {
   padding-left: 20px;
@@ -41,11 +56,32 @@ header ul li {
   width: 100%;
   height: 80vh;
 }
+@media screen and (max-width: 1024px) {
+  .mainvisual {
+    height: 50vh;
+  }
+}
+@media screen and (max-width: 600px) {
+  .mainvisual {
+    background-position: -67%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .about ul {
+    text-align: center;
+  }
+}
 
 section.gallery ul {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 10px;
+}
+@media screen and (max-width: 600px) {
+  section.gallery ul {
+    display: block;
+  }
 }
 section.gallery ul li img {
   width: 100%;
@@ -55,12 +91,36 @@ section.news dl {
   display: grid;
   grid-template-columns: 10em auto;
 }
+@media screen and (max-width: 600px) {
+  section.news dl {
+    display: block;
+  }
+}
 section.news dl dt, section.news dl dd {
   border-top: 1px solid #C0C0C0;
   padding: 15px;
 }
+@media screen and (max-width: 600px) {
+  section.news dl dt, section.news dl dd {
+    border-top: 0;
+    padding: 0;
+  }
+}
+@media screen and (max-width: 600px) {
+  section.news dl dt {
+    display: block;
+    font-weight: bold;
+  }
+}
 section.news dl dd {
   margin-left: 0;
+}
+@media screen and (max-width: 600px) {
+  section.news dl dd {
+    border-bottom: 1px dotted #000000;
+    font-size: 60%;
+    padding: 5px 0;
+  }
 }
 
 footer {
